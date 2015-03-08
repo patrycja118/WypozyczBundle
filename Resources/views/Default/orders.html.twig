@@ -1,0 +1,37 @@
+{% extends "PatrycjaWypozyczBundle:Default:index.html.twig" %}
+
+	{% block header %}
+		
+	{% endblock %}
+
+
+
+	{% block content %}
+
+	<?php
+    $var = $GET['movies.id'];
+    echo $movies.id
+	?>
+
+
+<div class="container">           
+
+
+		<h2>Dodaj Zamówienie</h2>
+		
+		<form method="POST">
+		
+
+		
+		{{ form_widget(form) }}
+		<button type="submit">Zamów</button>
+		</form>
+		
+</div>
+	</div>    
+        
+ 
+    	
+ 
+
+	{% endblock %}

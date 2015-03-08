@@ -1,0 +1,26 @@
+patrycja_wypozycz_homepage:
+    path:     /
+    defaults: { _controller: PatrycjaWypozyczBundle:Default:main }
+
+
+
+patrycja_wypozycz_Orders:
+    path:     /Orders
+    defaults: { _controller: PatrycjaWypozyczBundle:Default:Orders }
+
+patrycja_wypozycz_OrdersBuy:
+    path:     /OrdersBuy
+    defaults: { _controller: PatrycjaWypozyczBundle:Default:OrdersBuy }
+
+patrycja_wypozycz_OrdersList:
+    path:     /OrdersList
+    defaults: { _controller: PatrycjaWypozyczBundle:Default:OrdersList }
+
+
+patrycja_wypozycz_Review:
+    path:     /Review
+    defaults: { _controller: PatrycjaWypozyczBundle:Default:Review }
+
+patrycjapp5_movies:
+    resource: "@PatrycjaWypozyczBundle/Resources/config/routing/movies.yml"
+    prefix:   /movies

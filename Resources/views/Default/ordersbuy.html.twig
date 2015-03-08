@@ -1,0 +1,83 @@
+{% extends "PatrycjaWypozyczBundle:Default:index.html.twig" %}
+
+
+    {% block header %}
+    <div class="container">   
+        <h1 style="text-align: center">Lista zakupów</h1>
+    </div>
+    {% endblock %}
+
+
+
+    {% block content %}
+        
+    
+<div class="container">           
+    <div class="row">           
+        <input type=button onClick="alert('wyświetla się komunikat')" value="Ogladaj">
+
+            <div class="accordion" id="accordion2">
+            {% set z = 'Zapłacone'%}
+            
+            {% set i=0%}
+            {%for orders in orders if orders.status==z %}
+
+
+            <div class="accordion-group">
+        <div class="col-md-2">      
+            {% set i = i + 1 %}
+                <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapse{{i}}">
+            <br><button type="button" class="btn btn-default">Zamówienie {{i}}</button></a>
+                </div>
+
+
+                    <div id="collapse{{i}}" class="accordion-body collapse in">
+                        <div class="accordion-inner">
+            <br>Status zamówienia:{{ orders.status}}
+            <br>Forma zapłaty:{{ orders.form}}
+            <br>Warunki zamówienia:{{ orders.conditions}}
+            <br>Film wypożyczony:
+            {% for movies in movies %}
+                        {% if (orders.MovieId == movies.id) %}
+                        {{ movies.title }}<br>
+                            {% endif %}
+                            {% endfor %}
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>                    
+            {%endfor%}
+    
+
+
+
+
+    </div>      
+</div>          
+ 
+    
+    
+
+    
+   
+        
+            
+
+        
+        
+    
+        
+ 
+        
+ 
+
+    {% endblock %}

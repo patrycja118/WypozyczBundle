@@ -1,0 +1,41 @@
+{% extends "PatrycjaWypozyczBundle:Default:index.html.twig" %}
+
+{% block header %}
+    <h1>Movies list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                
+         
+            </tr>
+        </thead>
+        <tbody>
+        {% for Movies in entities %}
+            <tr>
+                
+                <td>{{ Movies.title }}</td>
+
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('movies_show', { 'id': Movies.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('movies_edit', { 'id': Movies.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('movies_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

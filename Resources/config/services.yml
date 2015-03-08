@@ -1,0 +1,4 @@
+services:
+#    patrycja_wypozycz.example:
+#        class: Patrycja\WypozyczBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

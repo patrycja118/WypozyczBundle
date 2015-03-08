@@ -1,0 +1,64 @@
+{% extends "PatrycjaWypozyczBundle:Default:index.html.twig" %}
+ {% block header %}
+  
+        <h3 style="text-align: center">{{ movie.title }}</h3>
+
+    {% endblock %}
+
+
+
+    {% block content %}
+    
+ <img src="{{asset('images/')}}{{ movie.poster }}" alt="Filmy" class="img-thumbnail"</td>>
+                        {#<br>Tytul:{{ movies.title }} </a>#}
+                        <h4><br>Opis:<br>{{ movie.description }}<br>
+                        <br>Numer filmu:<br>{{ movie.id }}<br>
+                        <br>Cena:<br>{{ movie.price }}<br>
+                        <br>Aktorzy:<br>
+                        
+                        {% for actor in aactors %}
+                        {% if (actor.MovieId == movie.id) %}
+                        {{ actor.name }}
+                        {% endif %}
+                     
+              
+                        {% endfor %}
+<br>
+                        <br>Kategoria:<br>
+
+                        {% for Specy in species %}
+                        {% if (Specy.MovieId == movie.id) %}
+                        {{ Specy.spec }}
+                        {% endif %}
+                        {% endfor %}
+
+
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+<a href="http://v-ie.uek.krakow.pl/~s173321/app_dev.php/Orders"><button type="button" class="btn btn-primary">Wypożycz </button></a><br>
+
+{% else %}
+<a href="http://v-ie.uek.krakow.pl/~s173321/app_dev.php/login"><button type="button" class="btn btn-primary">Zaloguj się</button></a><br>
+<a href="http://v-ie.uek.krakow.pl/~s173321/app_dev.php/register"><button type="button" class="btn btn-primary">Wypożycz </button></a><br>
+
+
+{%endif%}
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+<a href="http://v-ie.uek.krakow.pl/~s173321/app_dev.php/Review"><button type="button" class="btn btn-primary">Dodaj recenzje</button></a>
+{%endif%}
+<br><a href="http://v-ie.uek.krakow.pl/~s173321/app_dev.php/">Wróc do strony poprzedniej</a><br>        
+ 
+
+                          
+                       
+                
+                        
+                            
+                
+                            
+
+
+
+ 
+{% endblock %}

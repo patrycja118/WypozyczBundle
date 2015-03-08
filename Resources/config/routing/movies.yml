@@ -1,0 +1,30 @@
+movies:
+    path:     /
+    defaults: { _controller: "PatrycjaWypozyczBundle:Movies:index" }
+
+movies_show:
+    path:     /{id}/show
+    defaults: { _controller: "PatrycjaWypozyczBundle:Movies:show" }
+
+movies_new:
+    path:     /new
+    defaults: { _controller: "PatrycjaWypozyczBundle:Movies:new" }
+
+movies_create:
+    path:     /create
+    defaults: { _controller: "PatrycjaWypozyczBundle:Movies:create" }
+    methods:  POST
+
+movies_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PatrycjaWypozyczBundle:Movies:edit" }
+
+movies_update:
+    path:     /{id}/update
+    defaults: { _controller: "PatrycjaWypozyczBundle:Movies:update" }
+    methods:  [POST, PUT]
+
+movies_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PatrycjaWypozyczBundle:Movies:delete" }
+    methods:  [POST, DELETE]

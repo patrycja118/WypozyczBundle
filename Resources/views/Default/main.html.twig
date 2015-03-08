@@ -1,0 +1,185 @@
+{% extends "PatrycjaWypozyczBundle:Default:index.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block header %}
+<div class="page-header">
+  <div class="row">
+
+
+
+
+    <div class="col-md-8">
+            
+                <h1 style="text-align: center">Wypożyczalnia</h1>
+            
+        </div>
+
+    <div class="col-md-2">
+{% if app.user.username is defined %}
+
+   <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><p>Zalogowano jako <a href="http://v-ie.uek.krakow.pl/~s173321/app_dev.php/profile"><strong><em>{{ app.user.username }}</em></strong></p></a></li>   
+        <li><a href="http://v-ie.uek.krakow.pl/~s173321/app_dev.php/OrdersBuy">Lista zakupionych filmów</a></li>
+        <li><a href="http://v-ie.uek.krakow.pl/~s173321/app_dev.php/OrdersList">Lista zamówionych filmów</a></li>
+        <li><a href="http://v-ie.uek.krakow.pl/~s173321/app_dev.php/logout">Wyloguj się</a></li>
+      </ul>
+    </div>
+    
+    
+    
+    
+
+{% else %}
+
+  <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><p>Niezalogowany użytkownik<br></p></li>
+        <li><a href="http://v-ie.uek.krakow.pl/~s173321/app_dev.php/login">Zaloguj się</a></li>    
+        <li><a href="http://v-ie.uek.krakow.pl/~s173321/app_dev.php/register">Zarejestruj się</a></li>
+      </ul>
+    </div>
+{% endif %}
+ {% endblock %}
+
+{% block content %}
+    
+      
+<div>
+      <ul class="nav navbar-nav">
+        
+        
+        <li><a href="http://v-ie.uek.krakow.pl/~s173321/app_dev.php/movies/">Wszystkie filmy</a></li>
+      </ul>
+    </div>
+
+
+
+    <div class="col-md-1" style="height:200px">
+
+        {% for movie in movie %}
+     
+                     <br><a href="{{path('movies_show', {'id': movie.id})}}">
+                      <br>{{ movie.title }} <br>
+                    <img src="{{asset('images/')}}{{ movie.poster }}"
+                     alt="Filmy"  height="70" width="70">
+                         </a>
+                        
+                        <h4><br>Opis:<br>{{ movie.description }}<br>
+                       {#} <br>Id:<br>{{ movie.id }}<br> {#}
+                        {#}<br>Cena:<br>{{ movie.price }}<br> {#}
+                       {#} <br>Aktorzy:<br> {#}
+                          
+                            
+
+                            {% set i = 0 %}
+                            {% for review in reviews %}
+                                {% if (review.MovieId == movie.id) %}
+                                    {% set i = i + 1 %}
+                                {% endif %}
+                            {% endfor %}
+            </div>  
+                               
+                {#}{% endfor %}{#}
+         
+    </div>            
+
+{% endfor %}
+{% for opinion in opinion %}
+
+
+                    <h1><small>Popularne:</small></h1><br>
+         
+
+                {% for lend in lend %}
+               
+                        <br><a href="{{path('movies_show', {'id': lend.0.id})}}">
+                     
+                    <img src="{{asset('images/')}}{{  lend.0.poster }}"
+                     alt="Filmy"  height="70" width="70">
+                         </a>
+                                <br>{{lend.0.title}}</a>
+                        <br>Liczba wypożyczeń:{{ lend.c}}<br><br>
+             
+                
+        <br><br>
+       
+                {%endfor%}               
+            </div>
+            </div>
+            </div>
+
+<br><br>
+
+ <div class="col-md-6" style="height:200px">                
+                    <h1><small>Według gatunków:</small></h1>                            
+            
+                     
+                {% for kind in kind%}
+                
+                    
+
+                <br><p class="text-capitalize"><strong>{{kind.spec}}</strong></p><br>
+                {%for variety in variety%}
+                {%if kind.spec==variety.spec%}<br>
+                <a href="{{path('movies_show', {'id': variety.id})}}">
+                    <img src="{{asset('images/')}}{{ variety.poster }}" alt="Filmy"
+                    height="70" width="70"></a>
+                <a href="{{path('movies_show', {'id': variety.id})}}">{{ variety.title }}</a>
+                {%endif%}
+
+                    
+
+                {%endfor%}
+                {%endfor%}
+
+            </div>
+
+                       
+                                            
+            
+                      
+                
+                
+        
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+</div>
+
+
+
+
+</h4>
+</div>
+    {%endfor%}  
+{% endblock %}
+                    
